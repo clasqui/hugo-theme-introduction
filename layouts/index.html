@@ -77,6 +77,11 @@
                         <img class="img-responsive avatar" src="{{ .Permalink }}" alt="{{ .Name }}">
                         {{ end }}
                         {{ end }}
+                        {{ with $home.Resources.GetMatch .Params.Image2 }}
+                        {{ with .Resize "320x" }}
+                        <img class="img-responsive avatar" src="{{ .Permalink }}" alt="{{ .Name }}">
+                        {{ end }}
+                        {{ end }}
                     </div>
                     <div class="markdown column">
                         {{ .Content }}
@@ -85,6 +90,15 @@
                 {{ else }}
                 <div class="markdown has-text-centered">
                     {{ .Content }}
+                </div>
+                {{ end }}
+                {{ if .Params.BotImage }}
+                <div class="markdown has-text-centered">
+                    {{ with $home.Resources.GetMatch .Params.BotImage }}
+                    {{ with .Resize "320x" }}
+                    <img class="img-responsive avatar" src="{{ .Permalink }}" alt="{{ .Name }}">
+                    {{ end }}
+                    {{ end }}
                 </div>
                 {{ end }}
             </div>
